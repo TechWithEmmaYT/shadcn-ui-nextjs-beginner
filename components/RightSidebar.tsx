@@ -26,40 +26,9 @@ const RightSidebar: FC<PropsType> = ({
   username,
   comments,
 }) => {
-  // const comments = [
-  //   {
-  //     username: "user12349-556",
-  //     comment: "I love u ❤️",
-  //     likes: 12,
-  //     like_active: false,
-  //     imgSrc: "https://i.pravatar.cc/150?img=10",
-  //   },
-  //   {
-  //     username: "animann",
-  //     comment: "What are you watching there?",
-  //     likes: 3,
-  //     like_active: false,
-  //     imgSrc: "https://i.pravatar.cc/150?img=11",
-  //   },
-  //   {
-  //     username: "edvvard",
-  //     comment: "Nice pajamas",
-  //     likes: 1,
-  //     like_active: true,
-  //     imgSrc: "https://i.pravatar.cc/150?img=12",
-  //   },
-  //   {
-  //     username: "omnomnom",
-  //     comment: "nooooooooooodlesssss 😆",
-  //     likes: 0,
-  //     like_active: false,
-  //     imgSrc: "https://i.pravatar.cc/150?img=15",
-  //   },
-  // ];
-
   return (
-    <div className="relative flex-[0.7]">
-      <div className="h-full pt-1 perspective-[1px] transform-style-preserve-3d [perspective-origin:right_top] pr-[8px]">
+    <div className="hidden lg:inline-block relative flex-[0.7]">
+      <div className="w-full h-full pt-1 perspective-[1px] transform-style-preserve-3d [perspective-origin:right_top] pr-[8px]">
         <div className="max-w-[90%]">
           <div className="p-4 space-y-4">
             <div className="flex flex-col items-center">
@@ -133,7 +102,7 @@ const RightSidebar: FC<PropsType> = ({
                           <Heart
                             fill="currentColor"
                             strokeWidth={0}
-                            className="w-5 h-5"
+                            className="w-5 h-5  flex-shrink-0"
                           />
                           <span className="text-[12px]">{comment.likes}</span>
                         </Button>

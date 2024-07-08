@@ -38,7 +38,7 @@ const MainContent: FC<PropsType> = ({
   return (
     <div className="w-full relative flex items-center justify-end min-h-full">
       <div className="flex justify-center gap-5 h-[580px] overflow-hidden w-full max-w-lg">
-        <div className="w-auto h-full max-w-[70%] bg-gray-900 rounded-lg border border-gray-500  overflow-hidden">
+        <div className="w-auto h-full lg:max-w-[70%] bg-gray-900 lg:rounded-lg border lg:lg:border-gray-500  overflow-hidden">
           <video
             src={videoSrc}
             controls={true}
@@ -46,10 +46,10 @@ const MainContent: FC<PropsType> = ({
             loop
             playsInline
             autoPlay
-            className="w-full h-full object-contain rounded-lg "
+            className="w-full h-full object-contain object-center lg:rounded-lg "
           />
         </div>
-        <div className="relative">
+        <div className="absolute  right-5 bottom-5 lg:relative lg:right-0 lg:bottom-0">
           <div className="flex flex-col items-start justify-end h-full space-y-4">
             <Button
               variant="ghost"

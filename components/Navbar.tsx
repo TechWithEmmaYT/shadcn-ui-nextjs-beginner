@@ -35,7 +35,7 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex-1 relative">
+        <div className="flex-1  hidden lg:inline-block relative">
           <form
             className="flex flex-row items-center p-[12px_16px] !bg-gray-200/50 dark:!bg-[rgba(255,255,255,0.12)] rounded-[92px] group relative overflow-hidden z-1 m-0
             hover:ring-1 hover:ring-gray-400"

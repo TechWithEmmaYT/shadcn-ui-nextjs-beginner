@@ -51,7 +51,7 @@ const LeftSidebar = () => {
     },
   ];
   return (
-    <div className="relative w-full max-w-[500px] h-auto">
+    <div className="hidden lg:flex relative w-full max-w-[500px] h-auto">
       <div className="w-full max-w-[500px] overflow-hidden pt-4 overflow-y-auto overscroll-contain perspective-[1px] transform-style-preserve-3d [perspective-origin:right_top] top-[60px] bottom-0 fixed z-[99] pr-[8px]">
         <div className=" max-w-[80%] mx-auto pl-2">
           <nav className="mb-4">
