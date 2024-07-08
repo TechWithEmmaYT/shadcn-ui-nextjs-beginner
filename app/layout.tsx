@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import LeftSidebar from "@/components/LeftSidebar";
+import { ThemeProvider } from "@/context/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const urbanist = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +19,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={urbanist.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen bg-white dark:bg-black">
+            <Navbar />
+            <main
+              className="relative pt-[70px] flex items-center w-[100vw] max-w-full justify-between
+            "
+            >
+              <LeftSidebar />
+              <div className="flex-1">{children}</div>
+            </main>
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
