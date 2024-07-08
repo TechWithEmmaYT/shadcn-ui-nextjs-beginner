@@ -1,40 +1,61 @@
+import { FC } from "react";
 import { Heart, Music } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import CommentIcon from "../public/assets/comment.svg";
 import PlusIcon from "../public/assets/plus.svg";
 
-const RightSidebar = () => {
-  const comments = [
-    {
-      username: "user12349-556",
-      comment: "I love u ❤️",
-      likes: 12,
-      like_active: false,
-      imgSrc: "https://i.pravatar.cc/150?img=10",
-    },
-    {
-      username: "animann",
-      comment: "What are you watching there?",
-      likes: 3,
-      like_active: false,
-      imgSrc: "https://i.pravatar.cc/150?img=11",
-    },
-    {
-      username: "edvvard",
-      comment: "Nice pajamas",
-      likes: 1,
-      like_active: true,
-      imgSrc: "https://i.pravatar.cc/150?img=12",
-    },
-    {
-      username: "omnomnom",
-      comment: "nooooooooooodlesssss 😆",
-      likes: 0,
-      like_active: false,
-      imgSrc: "https://i.pravatar.cc/150?img=15",
-    },
-  ];
+type PropsType = {
+  fullname: string;
+  username: string;
+  pics: string;
+  caption: string;
+  comments: {
+    username: string;
+    comment: string;
+    likes: number;
+    like_active: boolean;
+    imgSrc: string;
+  }[];
+};
+
+const RightSidebar: FC<PropsType> = ({
+  fullname,
+  pics,
+  caption,
+  username,
+  comments,
+}) => {
+  // const comments = [
+  //   {
+  //     username: "user12349-556",
+  //     comment: "I love u ❤️",
+  //     likes: 12,
+  //     like_active: false,
+  //     imgSrc: "https://i.pravatar.cc/150?img=10",
+  //   },
+  //   {
+  //     username: "animann",
+  //     comment: "What are you watching there?",
+  //     likes: 3,
+  //     like_active: false,
+  //     imgSrc: "https://i.pravatar.cc/150?img=11",
+  //   },
+  //   {
+  //     username: "edvvard",
+  //     comment: "Nice pajamas",
+  //     likes: 1,
+  //     like_active: true,
+  //     imgSrc: "https://i.pravatar.cc/150?img=12",
+  //   },
+  //   {
+  //     username: "omnomnom",
+  //     comment: "nooooooooooodlesssss 😆",
+  //     likes: 0,
+  //     like_active: false,
+  //     imgSrc: "https://i.pravatar.cc/150?img=15",
+  //   },
+  // ];
 
   return (
     <div className="relative flex-[0.7]">
@@ -45,18 +66,18 @@ const RightSidebar = () => {
               <div className="w-full flex items-center justify-between mb-1">
                 <div className="flex items-center gap-3">
                   <Image
-                    src="https://i.pravatar.cc/150?img=9"
-                    alt="Avatar"
+                    src={pics}
+                    alt={fullname}
                     width={50}
                     height={50}
                     className="rounded-full"
                   />
                   <div>
                     <h5 className="flex items-center gap-2 font-semibold leading-[11.5px] m-0">
-                      Bella Poarch
+                      {fullname}
                     </h5>
                     <span className="text-black/40 dark:text-white/70 font-normal text-sm">
-                      @bellapoarch
+                      {username}
                     </span>
                   </div>
                 </div>
@@ -71,7 +92,7 @@ const RightSidebar = () => {
                 </Button>
               </div>
               <div className="w-full flex flex-col gap-2">
-                <span className=" dark:text-white/80">Anime and chill 🌙</span>
+                <span className=" dark:text-white/80">{caption}</span>
                 <span className="flex items-center text-[14px] dark:text-white/80 font-medium gap-2">
                   <Music strokeWidth={3} className="w-5 h-5" />
                   Artist - the name of a song
@@ -83,7 +104,7 @@ const RightSidebar = () => {
               <h2 className="text-black/70 dark:text-white/70  text-[17px] font-bold mb-2">
                 Comments
               </h2>
-              <div className="w-full h-auto max-h-[380px] overflow-y-auto overscroll-contain perspective-[1px] transform-style-preserve-3d space-y-1 pr-4">
+              <div className="w-full h-[330px] max-h-[330px] overflow-y-auto overscroll-contain  space-y-1 pr-4">
                 {comments.map((comment, index) => (
                   <div key={index} className="relative flex space-x-4">
                     <div className="relative flex-shrink-0">

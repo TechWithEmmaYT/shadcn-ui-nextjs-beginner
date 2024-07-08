@@ -1,3 +1,4 @@
+import { FC } from "react";
 import HeartIcon from "../public/assets/heart.svg";
 import CommentIcon from "../public/assets/comment.svg";
 import BookmarkIcon from "../public/assets/bookmark.svg";
@@ -10,27 +11,42 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 
-const videoData = {
-  videoSrc:
-    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-  likes: "998.9K",
-  comments: 1021,
-  bookmark: 21,
-  shares: 423,
+// const videoData = {
+//   videoSrc:
+//     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+//   likes: "998.9K",
+//   comments: 1021,
+//   bookmark: 21,
+//   shares: 423,
+// };
+
+type PropsType = {
+  videoSrc: string;
+  likes: string;
+  comment: number;
+  bookmark: number;
+  shares: number;
 };
 
-const MainContent = () => {
+const MainContent: FC<PropsType> = ({
+  videoSrc,
+  likes,
+  bookmark,
+  comment,
+  shares,
+}) => {
   return (
     <div className="w-full relative flex items-center justify-end min-h-full">
       <div className="flex justify-center gap-5 h-[580px] overflow-hidden w-full max-w-lg">
         <div className="w-auto h-full max-w-[70%] bg-gray-900 rounded-lg border border-gray-500  overflow-hidden">
           <video
-            src={videoData.videoSrc}
+            src={videoSrc}
             controls={true}
             muted
             loop
             playsInline
-            className="w-full h-full object-cover rounded-lg "
+            autoPlay
+            className="w-full h-full object-contain rounded-lg "
           />
         </div>
         <div className="relative">
@@ -42,7 +58,7 @@ const MainContent = () => {
               <span className="flex justify-center items-center text-black dark:!text-white rounded-full transition-all duration-200 ease-in-out cursor-pointer w-12 h-12 bg-[#eee] dark:bg-[rgba(255,255,255,0.12)] mt-2 mb-1.5">
                 <HeartIcon />
               </span>
-              <span>{videoData.likes}</span>
+              <span>{likes}</span>
             </Button>
             <Button
               variant="ghost"
@@ -54,7 +70,7 @@ const MainContent = () => {
               >
                 <CommentIcon />
               </span>
-              <span>{videoData.comments}</span>
+              <span>{comment}</span>
             </Button>
 
             <Button
@@ -67,7 +83,7 @@ const MainContent = () => {
               >
                 <BookmarkIcon />
               </span>
-              <span>{videoData.comments}</span>
+              <span>{bookmark}</span>
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger className="!w-auto !h-auto !outline-none flex flex-col items-center !p-0 font-bold !bg-transparent">
@@ -77,7 +93,7 @@ const MainContent = () => {
                 >
                   <ShareIcon />
                 </span>
-                <span>{videoData.shares}</span>
+                <span>{shares}</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 className="w-56 py-3 dark:bg-gray-800 dark:text-white text-gray-700 !border-none "

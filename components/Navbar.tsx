@@ -8,27 +8,32 @@ import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuRadioItem,
+  DropdownMenuRadioGroup,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
-import SendIcon from "./icons/send-icon";
-import MessageIcon from "./icons/message-icon";
+import SendIcon from "../public/assets/send.svg";
+import MessageIcon from "../public/assets/message.svg";
 import Logo from "../public/assets/logo.svg";
+import LogoDark from "../public/assets/logo-dark.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Navbar = () => {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   return (
     <nav className="fixed z-[999] w-full top-0 dark:bg-black p-3 py-2 border-b dark:border-gray-800">
       <div className="max-w-default mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex-1 flex flex-col items-start justify-start">
           <Link className="" href="/">
-            <Logo />
+            {theme === "dark" ? <Logo /> : <LogoDark />}
             <strong className="hidden">TikTok</strong>
           </Link>
         </div>
+
         {/* Search Bar */}
         <div className="flex-1 relative">
           <form
@@ -56,7 +61,7 @@ const Navbar = () => {
             </Button>
           </form>
         </div>
-        {/* Profile Icon */}
+
         <div className="flex-1 flex items-center justify-end space-x-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -66,16 +71,37 @@ const Navbar = () => {
                 <span className="sr-only">Toggle theme</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="mt-3">
-              <DropdownMenuItem onClick={() => setTheme("light")}>
-                Light
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("dark")}>
-                Dark
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("system")}>
-                System
-              </DropdownMenuItem>
+            <DropdownMenuContent
+              align="end"
+              className="w-52 py-1 mt-3 px-2 pb-2"
+            >
+              <DropdownMenuLabel className="text-[15px] font-medium">
+                Dark mode
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuRadioGroup
+                value={theme}
+                onValueChange={(value) => setTheme(value)}
+              >
+                <DropdownMenuRadioItem
+                  className="cursor-pointer text-[15px] font-medium"
+                  value="light"
+                >
+                  Light
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem
+                  className="cursor-pointer text-[15px] font-medium"
+                  value="dark"
+                >
+                  Dark
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem
+                  className="cursor-pointer text-[15px] font-medium"
+                  value="system"
+                >
+                  System
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -90,6 +116,7 @@ const Navbar = () => {
               5
             </sup>
           </div>
+
           <div className="relative">
             <Link href="/">
               <MessageIcon className="w-8 h-8" />
@@ -101,6 +128,8 @@ const Navbar = () => {
               13
             </sup>
           </div>
+
+          {/* Profile Icon */}
           <Link href="/profile">
             <Avatar className="w-[32px] h-[32px]">
               <AvatarImage src="https://i.pravatar.cc/150?img=1" />

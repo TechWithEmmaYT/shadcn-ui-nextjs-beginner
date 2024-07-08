@@ -97,11 +97,11 @@ const LeftSidebar = () => {
                     className="rounded-full"
                   />
                   <div className="flex flex-col">
-                    <h5 className="flex items-center gap-2 font-bold leading-[19.5px]">
+                    <h5 className="text-[#09090b] dark:text-white flex items-center gap-2 font-bold leading-[19.5px]">
                       <span>{account.name}</span>
                       <span>{account.verified && <Badge />}</span>
                     </h5>
-                    <span className="text-black/70 dark:text-white/70 font-normal text-sm">
+                    <span className="!text-black/70 dark:!text-white/70 font-normal text-sm">
                       @{account.username}
                     </span>
                   </div>
@@ -131,7 +131,7 @@ const LeftSidebar = () => {
                     className="rounded-full"
                   />
                   <div className="flex flex-col">
-                    <h5 className="flex items-center gap-2 font-bold leading-[19.5px]">
+                    <h5 className="flex items-center gap-2 font-bold leading-[19.5px] text-[#09090b] dark:text-white">
                       <span>{account.name}</span>
                       <span>{account?.verified && <Badge />}</span>
                     </h5>
